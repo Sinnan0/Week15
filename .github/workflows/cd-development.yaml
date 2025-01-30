@@ -18,17 +18,16 @@ jobs:
       with:
         path: "./dist"
         name: "build-artifact-development"
-
   deploy-development-job:
-  needs: build-development-job
-  environmnet: "development-env"
-  permissions:
-    pages: write
-    id-token: write
-  runs-on: ubuntu-latest
-  steps:
-    - name: Deploy Development Artifacts
-      uses: actions/deploy-pages@v4
-      with: 
-        artifact_name: "build-artifact-development"
-        token: ${{github.token}}
+    runs-on: ubuntu-latest
+    needs: build-development-job
+    environment: "development-env"
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy Development Artifacts
+        uses: actions/deploy-pages@v4
+        with: 
+          artifact_name: "build-artifact-development"
+          token: ${{github.token}}
