@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Website for deployment
-        runs: |
+        run: |
           npx parcel build "./src/index.html" --dist-dir "./dist" --public-url "./"
       - name: Upload Artifacts to GH cloud
         uses: actions/upload-pages-artifact@v3
