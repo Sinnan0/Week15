@@ -6,18 +6,18 @@ on:
 
 jobs:
   build-development-job:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Build Website for deployment
-      runs: |
-        npx parcel build "./src/index.html" --dist-dir "./dist" --public-url "./"
-    - name: Upload Artifacts to GH cloud
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: "./dist"
-        name: "build-artifact-development"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build Website for deployment
+        runs: |
+          npx parcel build "./src/index.html" --dist-dir "./dist" --public-url "./"
+      - name: Upload Artifacts to GH cloud
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+          name: "build-artifact-development"
   deploy-development-job:
     runs-on: ubuntu-latest
     needs: build-development-job
